@@ -1,0 +1,1 @@
+{"latitude": "invalid", "user_id": "invalid", "name": "invalid", "longitude": "invalid"}

@@ -1,0 +1,38 @@
+<?php
+/**
+ * @file
+ * Simple Customer Tracker.
+ *
+ * @author: Bruno Ricardo Siqueira <brunoric@gmail.com>
+ */
+
+namespace brunoric\GPS;
+
+include_once __DIR__ . '/../src/Calculator.php';
+include_once __DIR__ . '/../src/Customer.php';
+include_once __DIR__ . '/../src/Point.php';
+include_once __DIR__ . '/../src/Tracker.php';
+
+define('TRACKER_RADIUS', 100000);
+
+/**
+ * Application entrypoint.
+ *
+ * Receives the user input to be parsed and and have users tracked.
+ */
+function run($input)
+{
+    if (empty($input[1])) {
+        echo 'An user source is required. Use either: ' . PHP_EOL;
+        echo 'track-customers <VALID_URL>' . PHP_EOL;
+        echo 'track-customers <VALID_FILE_PATH>' . PHP_EOL;
+        exit(1);
+    }
+
+    $data = file_get_contents($input[1]);
+    $tracker = new Tracker($data);
+    $tracker->parseFile($data);
+    $tracker->getCustomersWithin(TRACKER_RADIUS);
+}
+
+run($argv);
