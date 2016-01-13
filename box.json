@@ -1,0 +1,18 @@
+{
+    "output": "track-customers.phar",
+    "chmod": "0755",
+    "compactors": [
+        "Herrera\\Box\\Compactor\\Php"
+    ],
+    "extract": false,
+    "main": "bin/track-customers",
+    "finder": [
+        {
+            "name": "*.*",
+            "exclude": ["test"],
+            "in": "src"
+        }
+    ],
+    "stub": true,
+    "web": false
+}
